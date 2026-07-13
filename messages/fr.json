@@ -1,0 +1,21 @@
+{
+  "Navigation": {
+    "home": "Accueil",
+    "catalogue": "Catalogue",
+    "categories": "Catégories",
+    "promotions": "Promotions",
+    "new": "Nouveautés",
+    "contact": "Contact",
+    "about": "À propos"
+  },
+  "Auth": {
+    "login": "Connexion",
+    "account": "Mon Compte",
+    "logout": "Déconnexion"
+  },
+  "Cart": {
+    "title": "Panier",
+    "add": "Ajouter au panier",
+    "empty": "Votre panier est vide"
+  }
+}
