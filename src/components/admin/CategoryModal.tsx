@@ -120,7 +120,7 @@ export function CategoryModal() {
                       />
                     </div>
                     <div className="flex-[1.5] space-y-1">
-                      <Select value={feature.icon} onValueChange={(val) => updateFeature(index, 'icon', val)}>
+                      <Select value={feature.icon} onValueChange={(val) => updateFeature(index, 'icon', val || '')}>
                         <SelectTrigger className="w-full h-10">
                           <SelectValue placeholder="Icône" />
                         </SelectTrigger>

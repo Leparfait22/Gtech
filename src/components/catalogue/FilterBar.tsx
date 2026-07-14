@@ -67,7 +67,7 @@ export function FilterBar({ categories }: FilterBarProps) {
       <div className="w-full sm:w-[180px]">
         <Select
           defaultValue={searchParams.get('category') || ''}
-          onValueChange={(value) => handleFilterChange('category', value === 'all' ? '' : value)}
+          onValueChange={(value) => handleFilterChange('category', value === 'all' || !value ? '' : value)}
         >
           <SelectTrigger>
             <SelectValue placeholder="Toutes..." />
@@ -84,7 +84,7 @@ export function FilterBar({ categories }: FilterBarProps) {
       <div className="w-full sm:w-[180px]">
         <Select
           defaultValue={searchParams.get('condition') || ''}
-          onValueChange={(value) => handleFilterChange('condition', value === 'all' ? '' : value)}
+          onValueChange={(value) => handleFilterChange('condition', value === 'all' || !value ? '' : value)}
         >
           <SelectTrigger>
             <SelectValue placeholder="Tous états" />
@@ -124,7 +124,7 @@ export function FilterBar({ categories }: FilterBarProps) {
       <div className="w-full sm:w-[180px] sm:ml-auto">
         <Select
           defaultValue={searchParams.get('sort') || 'recent'}
-          onValueChange={(value) => handleFilterChange('sort', value)}
+          onValueChange={(value) => handleFilterChange('sort', value || 'recent')}
         >
           <SelectTrigger>
             <SelectValue placeholder="Trier par" />
