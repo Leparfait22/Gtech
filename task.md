@@ -1,0 +1,23 @@
+# Tarefas - E-Commerce Premium
+
+- [x] 1. Configuração Inicial
+  - [x] Criar projeto Next.js 15
+  - [x] Instalar Tailwind CSS e dependências
+  - [x] Inicializar shadcn/ui e configurar paleta de cores (Verde, Branco, Preto)
+- [ ] 2. Integração Supabase e Auth
+  - [x] Configurar cliente Supabase
+  - [x] Configuração tabelas base (produtos, categorias)
+  - [x] Implementar fluxo de autenticação e proteção de rotas (Painel Admin)
+- [x] 3. Internacionalização (i18n)
+  - [x] Configurar `next-intl` (Foco em Francês inicialmente)
+- [ ] 4. Páginas Públicas
+  - [x] Home (Hero Banner, Categorias, Produtos em destaque)
+  - [x] Catálogo e Categorias
+  - [x] Detalhes do Produto
+  - [x] Carrinho (Sidebar/Sheet)
+  - [ ] Checkout Simulado
+- [ ] 5. Painel Administrativo
+  - [ ] Layout do Admin
+  - [ ] Gerenciamento de Produtos
+  - [ ] Gerenciamento de Categorias
+  - [ ] Visão Geral de Pedidos

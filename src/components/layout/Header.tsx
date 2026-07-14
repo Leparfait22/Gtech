@@ -12,11 +12,11 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-        
+
         {/* Logo */}
         <div className="flex items-center gap-2">
           <Link href="/" className="text-xl font-bold tracking-tighter">
-            iTECH<span className="text-primary">.</span>
+            G-TECH<span className="text-primary">.</span>
           </Link>
         </div>
 
@@ -33,12 +33,14 @@ export function Header() {
           <Button variant="ghost" size="icon" className="hidden md:flex">
             <Search className="w-5 h-5" />
           </Button>
-          <Button variant="ghost" size="icon">
-            <User className="w-5 h-5" />
-          </Button>
-          
+          <Link href="/login">
+            <Button variant="ghost" size="icon">
+              <User className="w-5 h-5" />
+            </Button>
+          </Link>
+
           <CartSheet />
-          
+
           <Button variant="ghost" size="icon" className="md:hidden">
             <Menu className="w-5 h-5" />
           </Button>

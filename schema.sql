@@ -21,6 +21,7 @@ create table if not exists public.products (
     promotional_price numeric(10, 2),
     stock integer default 0 not null,
     image_url text,
+    condition text default 'Neuf',
     created_at timestamp with time zone default timezone('utc'::text, now()) not null
 );
 
