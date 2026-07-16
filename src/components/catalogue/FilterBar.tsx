@@ -58,6 +58,25 @@ export function FilterBar({ categories }: FilterBarProps) {
     }
   }
 
+  const currentCategory = searchParams.get('category') || 'all'
+  const currentCondition = searchParams.get('condition') || 'all'
+  const currentSort = searchParams.get('sort') || 'recent'
+
+  const selectedCatName = currentCategory === 'all' 
+    ? "Toutes les catégories" 
+    : categories.find(c => c.id === currentCategory)?.name || "Toutes..."
+
+  const selectedConditionName = currentCondition === 'all' 
+    ? "Tous états" 
+    : currentCondition
+
+  const sortNames: Record<string, string> = {
+    'recent': 'Plus récents',
+    'price_asc': 'Prix croissant',
+    'price_desc': 'Prix décroissant'
+  }
+  const selectedSortName = sortNames[currentSort] || 'Trier par'
+
   return (
     <div className="flex flex-wrap items-center gap-4 bg-white dark:bg-zinc-900 p-4 rounded-xl border shadow-sm mb-8">
       <div className="flex items-center text-muted-foreground mr-2">
@@ -66,11 +85,11 @@ export function FilterBar({ categories }: FilterBarProps) {
 
       <div className="w-full sm:w-[180px]">
         <Select
-          defaultValue={searchParams.get('category') || ''}
+          value={currentCategory}
           onValueChange={(value) => handleFilterChange('category', value === 'all' || !value ? '' : value)}
         >
           <SelectTrigger>
-            <SelectValue placeholder="Toutes..." />
+            <SelectValue>{selectedCatName}</SelectValue>
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="all">Toutes les catégories</SelectItem>
@@ -83,11 +102,11 @@ export function FilterBar({ categories }: FilterBarProps) {
 
       <div className="w-full sm:w-[180px]">
         <Select
-          defaultValue={searchParams.get('condition') || ''}
+          value={currentCondition}
           onValueChange={(value) => handleFilterChange('condition', value === 'all' || !value ? '' : value)}
         >
           <SelectTrigger>
-            <SelectValue placeholder="Tous états" />
+            <SelectValue>{selectedConditionName}</SelectValue>
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="all">Tous états</SelectItem>
@@ -123,11 +142,11 @@ export function FilterBar({ categories }: FilterBarProps) {
 
       <div className="w-full sm:w-[180px] sm:ml-auto">
         <Select
-          defaultValue={searchParams.get('sort') || 'recent'}
+          value={currentSort}
           onValueChange={(value) => handleFilterChange('sort', value || 'recent')}
         >
           <SelectTrigger>
-            <SelectValue placeholder="Trier par" />
+            <SelectValue>{selectedSortName}</SelectValue>
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="recent">Plus récents</SelectItem>

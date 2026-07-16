@@ -1,12 +1,13 @@
 import { ReactNode } from 'react'
 import { Link } from '@/i18n/routing'
-import { LayoutDashboard, Package, ShoppingCart, LogOut, Menu } from 'lucide-react'
+import { LayoutDashboard, Package, ShoppingCart, LogOut, Menu, Image as ImageIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
   const navigation = [
     { name: 'Vue d\'ensemble', href: '/admin', icon: LayoutDashboard },
+    { name: 'Banners', href: '/admin/banners', icon: ImageIcon },
     { name: 'Produits', href: '/admin/produits', icon: Package },
     { name: 'Commandes', href: '/admin/commandes', icon: ShoppingCart },
   ]

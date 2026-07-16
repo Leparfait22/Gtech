@@ -7,7 +7,7 @@ export function Footer() {
       {/* Map Section */}
       <div className="w-full h-[300px] border-t">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15865.75389650965!2d1.21855215!3d6.1363619!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1023e1e69d72d621%3A0x2a3e0f9b6e8f4958!2sLom%C3%A9%2C%20Togo!5e0!3m2!1sfr!2sbr!4v1714570000000!5m2!1sfr!2sbr"
+          src="https://www.google.com/maps?q=6.137617111206055,1.2280464172363281&z=17&hl=fr&output=embed"
           width="100%"
           height="100%"
           style={{ border: 0 }}
@@ -24,9 +24,7 @@ export function Footer() {
           {/* Logo and Description */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <div className="bg-white text-[#0f172a] p-1.5 rounded font-black text-xl leading-none flex items-center justify-center tracking-tighter">
-                iT
-              </div>
+             
               <span className="font-bold text-white tracking-widest text-lg">G-TECH STORE</span>
             </div>
             <p className="text-zinc-400 mt-4 leading-relaxed max-w-xs">
@@ -45,12 +43,12 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/catalogue" className="hover:text-white transition-colors">
-                  Notre Boutique
+                  Produits
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-white transition-colors">
-                  Contact
+                <Link href="/notre-boutique" className="hover:text-white transition-colors">
+                  Notre Boutique & Contact
                 </Link>
               </li>
             </ul>
@@ -62,22 +60,26 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
                 <Phone className="w-4 h-4 mt-0.5 text-zinc-400 shrink-0" />
-                <span>+228 92 58 39 48 / 98 18 74 70</span>
+                <span>+228 79542958</span>
               </li>
               <li className="flex items-start gap-3">
                 <Mail className="w-4 h-4 mt-0.5 text-zinc-400 shrink-0" />
                 <a href="mailto:G-TECHstore2k21@gmail.com" className="hover:text-white transition-colors">
-                  G-TECHstore2k21@gmail.com
+                  remamoussougan@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 mt-0.5 text-zinc-400 shrink-0" />
-                <span>Boutique 1 : Adewui, en face de la poste</span>
+                <a 
+                  href="https://www.google.com/maps?q=6.137617111206055,1.2280464172363281" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors"
+                >
+                  Decon Allo Mobile - Non loin de NOPEGALI
+                </a>
               </li>
-              <li className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 mt-0.5 text-zinc-400 shrink-0" />
-                <span>Boutique 2 : Hedzranawoé, Maison du HADJ</span>
-              </li>
+            
             </ul>
           </div>
 

@@ -5,6 +5,7 @@ import { Link } from '@/i18n/routing'
 import { ShoppingCart, Search, User, Menu } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { CartSheet } from './CartSheet'
+import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetClose } from '@/components/ui/sheet'
 
 export function Header() {
   const t = useTranslations('Navigation')
@@ -25,7 +26,7 @@ export function Header() {
           <Link href="/catalogue" className="hover:text-foreground transition-colors">{t('catalogue')}</Link>
           <Link href="/promotions" className="hover:text-primary transition-colors">{t('promotions')}</Link>
           <Link href="/nouveautes" className="hover:text-foreground transition-colors">{t('new')}</Link>
-          <Link href="/a-propos" className="hover:text-foreground transition-colors">{t('about')}</Link>
+          <Link href="/notre-boutique" className="hover:text-foreground transition-colors">{t('about')}</Link>
         </nav>
 
         {/* Actions */}
@@ -41,9 +42,34 @@ export function Header() {
 
           <CartSheet />
 
-          <Button variant="ghost" size="icon" className="md:hidden">
-            <Menu className="w-5 h-5" />
-          </Button>
+          <Sheet>
+            <SheetTrigger render={
+              <Button variant="ghost" size="icon" className="md:hidden">
+                <Menu className="w-5 h-5" />
+              </Button>
+            } />
+            <SheetContent side="left" className="w-[300px]">
+              <SheetHeader>
+                <SheetTitle className="text-left font-bold tracking-tighter text-xl">
+                  G-TECH<span className="text-primary">.</span>
+                </SheetTitle>
+              </SheetHeader>
+              <div className="flex flex-col gap-6 mt-8">
+                <SheetClose render={
+                  <Link href="/catalogue" className="text-lg font-medium hover:text-primary transition-colors">{t('catalogue')}</Link>
+                } />
+                <SheetClose render={
+                  <Link href="/promotions" className="text-lg font-medium hover:text-primary transition-colors">{t('promotions')}</Link>
+                } />
+                <SheetClose render={
+                  <Link href="/nouveautes" className="text-lg font-medium hover:text-primary transition-colors">{t('new')}</Link>
+                } />
+                <SheetClose render={
+                  <Link href="/notre-boutique" className="text-lg font-medium hover:text-primary transition-colors">{t('about')}</Link>
+                } />
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
 
       </div>
