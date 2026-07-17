@@ -3,6 +3,7 @@ import { Link } from '@/i18n/routing'
 import { LayoutDashboard, Package, ShoppingCart, LogOut, Menu, Image as ImageIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
+import { logout } from '../(shop)/login/actions'
 
 export const metadata = {
   title: 'Administration',
@@ -39,13 +40,15 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
                 </Link>
               ))}
               <div className="border-t pt-4 mt-auto">
-                <Link
-                  href="/login"
-                  className="flex items-center gap-4 px-2.5 text-red-600 hover:text-red-500"
-                >
-                  <LogOut className="h-5 w-5" />
-                  Déconnexion
-                </Link>
+                <form action={logout} className="w-full">
+                  <button
+                    type="submit"
+                    className="flex w-full items-center gap-4 px-2.5 text-red-600 hover:text-red-500 bg-transparent border-0 cursor-pointer text-left"
+                  >
+                    <LogOut className="h-5 w-5" />
+                    Déconnexion
+                  </button>
+                </form>
               </div>
             </nav>
           </SheetContent>
@@ -68,13 +71,15 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
             </nav>
           </div>
           <div className="hidden sm:flex">
-             <Link
-                href="/login"
-                className="flex items-center gap-2 text-sm font-medium text-red-600 hover:text-red-500"
-              >
-                <LogOut className="h-4 w-4" />
-                Déconnexion
-              </Link>
+             <form action={logout}>
+               <button
+                  type="submit"
+                  className="flex items-center gap-2 text-sm font-medium text-red-600 hover:text-red-500 bg-transparent border-0 cursor-pointer"
+                >
+                  <LogOut className="h-4 w-4" />
+                  Déconnexion
+                </button>
+             </form>
           </div>
         </div>
       </header>

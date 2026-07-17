@@ -6,6 +6,12 @@ import { revalidatePath } from 'next/cache'
 export async function createBanner(formData: FormData) {
   const supabase = await createClient()
 
+  // Verify admin authorization
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user || user.app_metadata?.role !== 'admin') {
+    return { success: false, error: 'Non autorisé. Droits administrateur requis.' }
+  }
+
   const title = formData.get('title') as string
   const media_url = formData.get('media_url') as string
   const media_type = formData.get('media_type') as string || 'video'
@@ -45,6 +51,12 @@ export async function createBanner(formData: FormData) {
 export async function toggleBannerStatus(id: string, is_active: boolean) {
   const supabase = await createClient()
 
+  // Verify admin authorization
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user || user.app_metadata?.role !== 'admin') {
+    return { success: false, error: 'Non autorisé. Droits administrateur requis.' }
+  }
+
   const { error } = await supabase
     .from('hero_banners')
     .update({ is_active })
@@ -63,6 +75,12 @@ export async function toggleBannerStatus(id: string, is_active: boolean) {
 export async function updateBannerOrder(orderedIds: string[]) {
   const supabase = await createClient()
 
+  // Verify admin authorization
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user || user.app_metadata?.role !== 'admin') {
+    return { success: false, error: 'Non autorisé. Droits administrateur requis.' }
+  }
+
   // Update each banner's display_order based on its index in the array
   const updates = orderedIds.map((id, index) => 
     supabase
@@ -80,6 +98,12 @@ export async function updateBannerOrder(orderedIds: string[]) {
 
 export async function deleteBanner(id: string) {
   const supabase = await createClient()
+
+  // Verify admin authorization
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user || user.app_metadata?.role !== 'admin') {
+    return { success: false, error: 'Non autorisé. Droits administrateur requis.' }
+  }
 
   const { error } = await supabase
     .from('hero_banners')

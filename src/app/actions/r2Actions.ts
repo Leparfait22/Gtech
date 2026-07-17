@@ -19,7 +19,7 @@ export async function getPresignedUrl(fileName: string, contentType: string) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   
-  if (!user) {
+  if (!user || user.app_metadata?.role !== 'admin') {
     return { success: false, error: 'Unauthorized' }
   }
 

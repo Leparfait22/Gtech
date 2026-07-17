@@ -6,6 +6,12 @@ import { revalidatePath } from 'next/cache'
 export async function createProduct(formData: FormData) {
   const supabase = await createClient()
 
+  // Verify admin authorization
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user || user.app_metadata?.role !== 'admin') {
+    return { success: false, error: 'Non autorisé. Droits administrateur requis.' }
+  }
+
   const title = formData.get('title') as string
   const description = formData.get('description') as string
   const price = parseFloat(formData.get('price') as string)

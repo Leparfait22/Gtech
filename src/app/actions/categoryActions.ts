@@ -6,6 +6,12 @@ import { createClient } from '@/utils/supabase/server'
 export async function createCategory(formData: FormData) {
   const supabase = await createClient()
 
+  // Verify admin authorization
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user || user.app_metadata?.role !== 'admin') {
+    return { error: 'Non autorisé. Droits administrateur requis.' }
+  }
+
   const name = formData.get('name') as string
   const description = formData.get('description') as string
   

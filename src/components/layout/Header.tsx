@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/routing'
-import { ShoppingCart, Search, User, Menu } from 'lucide-react'
+import { ShoppingCart, Search, Menu } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { CartSheet } from './CartSheet'
 import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetClose } from '@/components/ui/sheet'
@@ -32,11 +32,6 @@ export function Header() {
           <Button variant="ghost" size="icon" className="hidden md:flex">
             <Search className="w-5 h-5" />
           </Button>
-          <Link href="/login">
-            <Button variant="ghost" size="icon">
-              <User className="w-5 h-5" />
-            </Button>
-          </Link>
 
           <CartSheet />
 
