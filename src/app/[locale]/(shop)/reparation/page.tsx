@@ -8,12 +8,13 @@ import { Textarea } from '@/components/ui/textarea'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { Wrench, Phone, AlertCircle } from 'lucide-react'
 
+
 export default function ReparationPage() {
   const [model, setModel] = useState('')
   const [description, setDescription] = useState('')
   const [name, setName] = useState('')
 
-  const WHATSAPP_NUMBER = '22892583948' // As specified, Togo number without +
+  const WHATSAPP_NUMBER = '5549999802249' // Format international sans le +
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()

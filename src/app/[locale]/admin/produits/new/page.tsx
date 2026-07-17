@@ -23,21 +23,7 @@ export default async function NewProductPage() {
         <p className="text-muted-foreground">Créez un nouveau produit pour votre catalogue.</p>
       </div>
 
-      {(!categories || categories.length === 0) ? (
-        <div className="bg-yellow-50 dark:bg-yellow-900/30 border border-yellow-200 dark:border-yellow-800 text-yellow-800 dark:text-yellow-200 p-6 rounded-xl flex flex-col items-start gap-4">
-          <div>
-            <h3 className="font-semibold text-lg">Aucune catégorie disponible</h3>
-            <p className="mt-1">Vous devez créer au moins une catégorie avant de pouvoir ajouter un produit.</p>
-          </div>
-          <Link href="/admin/categories">
-            <Button className="bg-yellow-600 hover:bg-yellow-700 text-white">
-              Créer une catégorie
-            </Button>
-          </Link>
-        </div>
-      ) : (
-        <ProductForm categories={categories} />
-      )}
+      <ProductForm categories={categories || []} />
     </div>
   )
 }

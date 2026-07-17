@@ -11,7 +11,10 @@ import { Footer } from '@/components/layout/Footer';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'E-Commerce Premium',
+  title: {
+    template: '%s | G-Store',
+    default: 'G-Store',
+  },
   description: 'Boutique en ligne premium',
 };
 

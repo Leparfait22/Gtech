@@ -3,6 +3,10 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 
+export const metadata = {
+  title: 'Notre Boutique',
+}
+
 export default function NotreBoutiquePage() {
   return (
     <main className="flex-1 bg-white dark:bg-zinc-950">
@@ -118,11 +122,11 @@ export default function NotreBoutiquePage() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-zinc-300">Nom complet</label>
-                    <Input name="subject" placeholder="Jean Dupont" className="bg-zinc-900 border-zinc-800 focus-visible:ring-primary h-12" required />
+                    <Input name="subject" placeholder="Jacob" className="bg-zinc-900 border-zinc-800 focus-visible:ring-primary h-12" required />
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-zinc-300">Email</label>
-                    <Input type="email" placeholder="jean@exemple.com" className="bg-zinc-900 border-zinc-800 focus-visible:ring-primary h-12" required />
+                    <Input type="email" placeholder="jacob@exemple.com" className="bg-zinc-900 border-zinc-800 focus-visible:ring-primary h-12" required />
                   </div>
                 </div>
                 

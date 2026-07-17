@@ -16,9 +16,8 @@ export async function login(formData: FormData) {
 
   if (error) {
     console.error('Login error:', error)
-    return { error: error.message || 'E-mail ou senha incorretos.' }
+    return { error: error.message || 'E-mail ou mot de passe incorrect.' }
   }
 
-  revalidatePath('/', 'layout')
   redirect('/admin')
 }

@@ -1,27 +1,32 @@
-import { type NextRequest } from 'next/server'
 import createMiddleware from 'next-intl/middleware'
+import { NextRequest } from 'next/server'
 import { routing } from './i18n/routing'
-import { updateSession } from '@/utils/supabase/middleware'
+import { updateSession } from './utils/supabase/middleware'
 
+// 1. Create the next-intl middleware for internationalization
 const intlMiddleware = createMiddleware(routing)
 
 export async function proxy(request: NextRequest) {
-  // 1. Run next-intl middleware to handle locales
-  const response = intlMiddleware(request)
+  // 2. Generate the i18n response first
+  const intlResponse = intlMiddleware(request)
 
-  // 2. Pass the response to Supabase to update the session (cookies)
-  // To do this properly, we need to adapt updateSession to accept a pre-existing response,
-  // or we can just update the Supabase middleware to handle it.
-  // Wait, updateSession creates its own response right now. Let's modify updateSession next.
-  
-  return await updateSession(request, response)
+  // 3. Pass the request and the i18n response to Supabase
+  // This allows Supabase to refresh the auth token and set cookies on the existing response
+  return await updateSession(request, intlResponse)
 }
 
+// 4. Configure the matcher to run on necessary routes
 export const config = {
   matcher: [
+    // Enable a redirect to a matching locale at the root
     '/',
-    '/(fr)/:path*',
-    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)'
-  ],
-}
+    
+    // Set a cookie to remember the previous locale for all requests that have a locale prefix
+    '/(fr|en)/:path*',
 
+    // Match all pathnames except for
+    // - … if they start with `/api`, `/_next` or `/_vercel`
+    // - … the ones containing a dot (e.g. `favicon.ico`)
+    '/((?!api|_next|_vercel|.*\\..*).*)'
+  ]
+}

@@ -38,6 +38,15 @@ export async function updateSession(request: NextRequest, response?: NextRespons
     return NextResponse.redirect(url)
   }
 
+  // Si l'utilisateur est DÉJÀ connecté et essaie d'accéder à la page de connexion, on le redirige vers l'admin
+  if (
+    user &&
+    request.nextUrl.pathname.includes('/login')
+  ) {
+    const url = request.nextUrl.clone()
+    url.pathname = '/admin'
+    return NextResponse.redirect(url)
+  }
+
   return supabaseResponse
 }
-

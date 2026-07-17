@@ -6,6 +6,10 @@ import { FilterBar } from '@/components/catalogue/FilterBar'
 import { Link } from '@/i18n/routing'
 import { HeroCarousel } from '@/components/layout/HeroCarousel'
 
+export const metadata = {
+  title: 'Accueil',
+}
+
 // Mock products fallback
 const MOCK_PRODUCTS = [
   {
@@ -97,8 +101,8 @@ export default async function Home({
   const { data: dbProducts } = await query
   const products = dbProducts && dbProducts.length > 0 ? dbProducts : MOCK_PRODUCTS
 
-  // se tem filtro, a gente ignora o MOCK e mostra vazio se não achar, ou mostra mock se não tem filtro?
-  // Se o usuário filtrou algo e não retornou, melhor mostrar array vazio para indicar que o filtro não achou nada
+  // Si on a un filtre, on ignore le MOCK et on affiche vide si non trouvé, ou on affiche le mock s'il n'y a pas de filtre ?
+  // Si l'utilisateur a filtré quelque chose et qu'il n'y a pas de retour, il vaut mieux afficher un tableau vide pour indiquer que le filtre n'a rien trouvé
   const hasActiveFilters = category || condition || minPrice || maxPrice
   const displayProducts = hasActiveFilters && (!dbProducts || dbProducts.length === 0) ? [] : products
 
@@ -187,11 +191,11 @@ export default async function Home({
                 <div className="inline-flex items-center justify-center p-3 bg-primary/20 text-primary rounded-xl mb-6">
                   <Wrench className="w-6 h-6" />
                 </div>
-                <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-4">
-                  Besoin d'une réparation ?
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-6 leading-tight">
+                  Un écran cassé ? Une batterie qui ne tient plus ? Un téléphone en panne ?
                 </h2>
-                <p className="text-lg text-zinc-300 mb-8 max-w-xl leading-relaxed">
-                  Notre équipe d'experts est là pour donner une seconde vie à vos appareils. Écrans cassés, batteries défectueuses ou problèmes logiciels, nous avons la solution.
+                <p className="text-lg md:text-xl text-zinc-300 mb-8 max-w-xl leading-relaxed">
+                  Confiez-le à nos experts. Nous redonnons vie à vos appareils avec un service rapide, fiable et garanti.
                 </p>
                 <Link href="/reparation">
                   <Button size="lg" className="h-14 px-8 text-lg w-full sm:w-auto bg-primary hover:bg-primary/90 text-white rounded-full">
@@ -212,7 +216,7 @@ export default async function Home({
                   <Truck className="w-6 h-6 text-primary" />
                 </div>
                 <h3 className="font-semibold text-lg mb-2">Livraison Rapide</h3>
-                <p className="text-muted-foreground text-sm">Livraison possible á combiner avec le client.</p>
+                <p className="text-muted-foreground text-sm">Livraison à convenir avec le client.</p>
               </div>
               <div className="flex flex-col items-center text-center p-6 bg-card rounded-2xl shadow-sm border">
                 <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">

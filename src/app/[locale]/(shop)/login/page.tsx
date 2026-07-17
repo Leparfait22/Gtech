@@ -31,19 +31,19 @@ export default function LoginPage() {
     <div className="flex items-center justify-center min-h-screen bg-muted/40">
       <Card className="w-full max-w-sm">
         <CardHeader>
-          <CardTitle className="text-2xl font-bold">Painel Administrativo</CardTitle>
+          <CardTitle className="text-2xl font-bold">Panneau d'administration</CardTitle>
           <CardDescription>
-            Entre com suas credenciais para acessar o sistema.
+            Entrez vos identifiants pour accéder au système.
           </CardDescription>
         </CardHeader>
         <form onSubmit={handleSubmit}>
           <CardContent className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="email">E-mail</Label>
-              <Input id="email" name="email" type="email" placeholder="admin@exemplo.com" required />
+              <Input id="email" name="email" type="email" placeholder="admin@exemple.com" required />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password">Senha</Label>
+              <Label htmlFor="password">Mot de passe</Label>
               <div className="relative">
                 <Input 
                   id="password" 
@@ -71,7 +71,7 @@ export default function LoginPage() {
           </CardContent>
           <CardFooter>
             <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-white" disabled={loading}>
-              {loading ? 'Entrando...' : 'Entrar'}
+              {loading ? 'Connexion...' : 'Se connecter'}
             </Button>
           </CardFooter>
         </form>

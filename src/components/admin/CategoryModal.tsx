@@ -66,20 +66,20 @@ export function CategoryModal() {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex items-center gap-2 border-dashed">
         <Plus className="w-4 h-4" />
-        <span className="hidden sm:inline">Nova Categoria</span>
-        <span className="sm:hidden">Categoria</span>
+        <span className="hidden sm:inline">Nouvelle Catégorie</span>
+        <span className="sm:hidden">Catégorie</span>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Nova Categoria</DialogTitle>
+          <DialogTitle>Nouvelle Catégorie</DialogTitle>
           <DialogDescription>
-            Adicione uma nova categoria de produtos ao sistema.
+            Ajoutez une nouvelle catégorie de produits au système.
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit}>
           <div className="grid gap-4 py-4">
             <div className="grid gap-2">
-              <Label htmlFor="name">Nome da Categoria</Label>
+              <Label htmlFor="name">Nom de la catégorie</Label>
               <Input
                 id="name"
                 name="name"
@@ -88,11 +88,11 @@ export function CategoryModal() {
               />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="description">Descrição (Opcional)</Label>
+              <Label htmlFor="description">Description (Optionnel)</Label>
               <Textarea
                 id="description"
                 name="description"
-                placeholder="Ex: Aparelhos celulares e acessórios"
+                placeholder="Ex: Téléphones portables et accessoires"
               />
             </div>
 
@@ -154,10 +154,10 @@ export function CategoryModal() {
           </div>
           <DialogFooter>
             <Button type="button" variant="outline" onClick={() => setOpen(false)} disabled={loading}>
-              Cancelar
+              Annuler
             </Button>
             <Button type="submit" disabled={loading}>
-              {loading ? 'Salvando...' : 'Salvar Categoria'}
+              {loading ? 'Enregistrement...' : 'Enregistrer la catégorie'}
             </Button>
           </DialogFooter>
         </form>

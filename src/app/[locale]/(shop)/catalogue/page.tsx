@@ -4,6 +4,10 @@ import { Link } from '@/i18n/routing'
 import { FilterBar } from '@/components/catalogue/FilterBar'
 import { formatPrice } from '@/utils/formatPrice'
 
+export const metadata = {
+  title: 'Catalogue',
+}
+
 export default async function CataloguePage({
   searchParams
 }: {

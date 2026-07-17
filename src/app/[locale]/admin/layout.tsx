@@ -4,6 +4,10 @@ import { LayoutDashboard, Package, ShoppingCart, LogOut, Menu, Image as ImageIco
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 
+export const metadata = {
+  title: 'Administration',
+}
+
 export default function AdminLayout({ children }: { children: ReactNode }) {
   const navigation = [
     { name: 'Vue d\'ensemble', href: '/admin', icon: LayoutDashboard },
