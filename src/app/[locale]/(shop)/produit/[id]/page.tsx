@@ -6,6 +6,7 @@ import { ArrowLeft, Check, Shield, Truck, Cpu, HardDrive, Monitor, Camera, Batte
 import { Link } from '@/i18n/routing'
 import { AddToCartButton } from './AddToCartButton'
 import { formatPrice } from '@/utils/formatPrice'
+import { ProductCarousel } from '@/components/product/ProductCarousel'
 
 // Mock products fallback
 const MOCK_PRODUCTS = [
@@ -96,22 +97,12 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
           </Link>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24">
-            {/* Product Image */}
-            <div className="aspect-square relative bg-zinc-100 rounded-3xl overflow-hidden shadow-sm">
-              {product.image_url ? (
-                <Image
-                  src={product.image_url}
-                  alt={product.title}
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center text-zinc-400">
-                  Sans image
-                </div>
-              )}
-            </div>
+            {/* Product Image Carousel */}
+            <ProductCarousel
+              mainImage={product.image_url}
+              additionalImages={product.images}
+              title={product.title}
+            />
 
             {/* Product Info */}
             <div className="flex flex-col justify-center">

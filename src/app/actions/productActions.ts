@@ -26,6 +26,9 @@ export async function createProduct(formData: FormData) {
   const featuresJson = formData.get('features') as string
   const features = featuresJson ? JSON.parse(featuresJson) : []
 
+  const imagesJson = formData.get('images') as string
+  const images = imagesJson ? JSON.parse(imagesJson) : []
+
   // Simple slug generation
   const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')
 
@@ -42,7 +45,8 @@ export async function createProduct(formData: FormData) {
         image_url,
         category_id,
         condition,
-        features
+        features,
+        images
       }
     ])
 
@@ -57,3 +61,88 @@ export async function createProduct(formData: FormData) {
   
   return { success: true }
 }
+
+export async function updateProduct(id: string, formData: FormData) {
+  const supabase = await createClient()
+
+  // Verify admin authorization
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user || user.app_metadata?.role !== 'admin') {
+    return { success: false, error: 'Non autorisé. Droits administrateur requis.' }
+  }
+
+  const title = formData.get('title') as string
+  const description = formData.get('description') as string
+  const price = parseFloat(formData.get('price') as string)
+  const promotional_price = formData.get('promotional_price') 
+    ? parseFloat(formData.get('promotional_price') as string) 
+    : null
+  const stock = parseInt(formData.get('stock') as string, 10)
+  const image_url = formData.get('image_url') as string
+  const category_id = formData.get('category_id') as string
+  const condition = formData.get('condition') as string || 'Neuf'
+  
+  const featuresJson = formData.get('features') as string
+  const features = featuresJson ? JSON.parse(featuresJson) : []
+
+  const imagesJson = formData.get('images') as string
+  const images = imagesJson ? JSON.parse(imagesJson) : []
+
+  // Simple slug generation
+  const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')
+
+  const { error } = await supabase
+    .from('products')
+    .update({
+      title,
+      slug,
+      description,
+      price,
+      promotional_price,
+      stock,
+      image_url,
+      category_id,
+      condition,
+      features,
+      images
+    })
+    .eq('id', id)
+
+  if (error) {
+    console.error('Error updating product:', error)
+    return { success: false, error: error.message }
+  }
+
+  revalidatePath('/[locale]/admin/produits', 'page')
+  revalidatePath('/[locale]/catalogue', 'page')
+  revalidatePath('/[locale]', 'page')
+  
+  return { success: true }
+}
+
+export async function deleteProduct(id: string) {
+  const supabase = await createClient()
+
+  // Verify admin authorization
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user || user.app_metadata?.role !== 'admin') {
+    return { success: false, error: 'Non autorisé. Droits administrateur requis.' }
+  }
+
+  const { error } = await supabase
+    .from('products')
+    .delete()
+    .eq('id', id)
+
+  if (error) {
+    console.error('Error deleting product:', error)
+    return { success: false, error: error.message }
+  }
+
+  revalidatePath('/[locale]/admin/produits', 'page')
+  revalidatePath('/[locale]/catalogue', 'page')
+  revalidatePath('/[locale]', 'page')
+
+  return { success: true }
+}
+

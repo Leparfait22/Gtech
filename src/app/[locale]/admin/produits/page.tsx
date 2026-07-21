@@ -1,10 +1,12 @@
 import { createClient } from '@/utils/supabase/server'
 import { Link } from '@/i18n/routing'
 import { Button } from '@/components/ui/button'
-import { Plus, Pencil, Trash2 } from 'lucide-react'
+import { Plus } from 'lucide-react'
 import Image from 'next/image'
 
 import { CategoryModal } from '@/components/admin/CategoryModal'
+import { ProductRowActions } from '@/components/admin/ProductRowActions'
+
 
 export default async function AdminProductsPage() {
   const supabase = await createClient()
@@ -92,14 +94,7 @@ export default async function AdminProductsPage() {
                       </div>
                     </td>
                     <td className="px-4 py-3 text-right">
-                      <div className="flex items-center justify-end gap-2">
-                        <Button variant="ghost" size="icon" className="h-8 w-8 text-blue-600 hover:text-blue-700 hover:bg-blue-50 dark:hover:bg-blue-950/30">
-                          <Pencil className="h-4 w-4" />
-                        </Button>
-                        <Button variant="ghost" size="icon" className="h-8 w-8 text-red-600 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-950/30">
-                          <Trash2 className="h-4 w-4" />
-                        </Button>
-                      </div>
+                      <ProductRowActions productId={product.id} productTitle={product.title} />
                     </td>
                   </tr>
                 ))
