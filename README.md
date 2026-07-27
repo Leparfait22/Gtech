@@ -2,8 +2,9 @@
 
 # G-TECH STORE
 
-**Plateforme e-commerce full-stack avec panneau d'administration intégré**  
-Vente de produits tech neufs & reconditionnés + service de réparation — Lomé, Togo
+**Plateforme e-commerce full-stack com painel de administração integrado**  
+
+Venda de produtos novos & recondicionados e serviços de reparação - lomè, togo
 
 [![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)](https://nextjs.org)
 [![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react)](https://react.dev)
@@ -17,7 +18,7 @@ Vente de produits tech neufs & reconditionnés + service de réparation — Lom�
 
 ## Sobre o Projeto
 
-G-Tech Store é uma plataforma de e-commerce completa desenvolvida para uma loja real de tecnologia em Lomé, Togo. O projeto combina uma vitrine pública de produtos com um sistema administrativo protegido, permitindo que o dono da loja gerencie todo o catálogo, banners e pedidos diretamente pela interface web — sem precisar de acesso ao banco de dados.
+G-Tech Store é uma plataforma de e-commerce completa desenvolvida para uma loja  de tecnologia em Lomé, Togo. O projeto combina uma vitrine pública de produtos com um sistema administrativo protegido, permitindo que o dono da loja gerencie todo o catálogo, banners e pedidos diretamente pela interface web.
 
 A plataforma oferece duas propostas de valor: **venda de eletrônicos** (novos e recondicionados) e um **serviço de reparação** com formulário integrado ao WhatsApp para agilizar orçamentos.
 
@@ -31,7 +32,7 @@ A plataforma oferece duas propostas de valor: **venda de eletrônicos** (novos e
 | **Next.js** | 16.x | Framework React com App Router, SSR e Server Actions |
 | **React** | 19.x | Biblioteca de interface |
 | **TypeScript** | 5.x | Tipagem estática em todo o projeto |
-| **Tailwind CSS** | v4 | Estilização utility-first com design system |
+| **Tailwind CSS** | v4 | Estilização com design system |
 | **shadcn/ui** + **Base UI** | — | Componentes acessíveis (Sheet, Dialog, Cards) |
 | **Framer Motion** | 12.x | Animações e transições |
 | **Lucide React** | — | Biblioteca de ícones |
@@ -71,40 +72,6 @@ Protegido por autenticação — acesso exclusivo para administradores.
 - **Gestão de Banners**: upload de vídeos/imagens para o Hero Carousel com controle de ordem e ativação
 - **Gestão de Categorias**: criação de categorias via modal integrado
 
----
-
-## Arquitetura
-
-```
-src/
-├── app/
-│   ├── [locale]/                   # Roteamento internacionalizado
-│   │   ├── (shop)/                 # Grupo de rotas públicas (storefront)
-│   │   │   ├── page.tsx            # Homepage — SSR com filtros dinâmicos
-│   │   │   ├── catalogue/          # Catálogo completo
-│   │   │   ├── produit/[id]/       # Página de produto individual
-│   │   │   ├── reparation/         # Formulário de orçamento via WhatsApp
-│   │   │   ├── paiement/           # Checkout
-│   │   │   └── login/              # Autenticação admin
-│   │   └── admin/                  # Painel administrativo (protegido)
-│   │       ├── produits/           # CRUD de produtos
-│   │       ├── banners/            # Gestão de banners
-│   │       └── commandes/          # Pedidos
-│   └── actions/                    # Next.js Server Actions
-│       ├── productActions.ts       # CRUD de produtos
-│       ├── bannerActions.ts        # CRUD de banners + ordenação
-│       ├── categoryActions.ts      # CRUD de categorias
-│       └── r2Actions.ts            # Upload de mídia via presigned URL
-├── components/
-│   ├── admin/                      # Formulários e tabelas do admin
-│   ├── layout/                     # Header, Footer, HeroCarousel, CartSheet
-│   ├── product/                    # ProductCard, ProductCarousel
-│   └── ui/                         # Componentes base (shadcn/ui)
-├── store/
-│   └── cart.ts                     # Zustand store com persistência
-└── utils/
-    └── supabase/                   # Clientes Supabase (server/client/middleware)
-```
 
 ### Decisões Técnicas
 
@@ -161,21 +128,19 @@ npm install
 
 ### Variáveis de Ambiente
 
-Crie um arquivo `.env` na raiz do projeto:
+Configura o arquivo .env
 
 ```env
 # Supabase — encontre em: Dashboard > Project Settings > API
-NEXT_PUBLIC_SUPABASE_URL=https://xxxxxxxxxxxx.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+NEXT_PUBLIC_SUPABASE_URL=xxxxxxx
+NEXT_PUBLIC_SUPABASE_ANON_KEY=xxxxxx
 
 # Cloudflare R2 — para upload de imagens e vídeos
 R2_ACCOUNT_ID=xxxxxxxxxxxx
 R2_ACCESS_KEY_ID=xxxxxxxxxxxx
 R2_SECRET_ACCESS_KEY=xxxxxxxxxxxx
 R2_BUCKET_NAME=nome-do-bucket
-NEXT_PUBLIC_R2_PUBLIC_URL=https://pub-xxxxxxxxxxxx.r2.dev
-```
-
+NEXT_PUBLIC_R2_PUBLIC_URL=xxxxxx
 ### Banco de Dados
 
 Execute o schema no SQL Editor do Supabase:
@@ -185,16 +150,6 @@ Execute o schema no SQL Editor do Supabase:
 # Dashboard > SQL Editor > New query
 ```
 
-### Criar usuário admin
-
-No Supabase Dashboard, após criar o usuário via Authentication, execute:
-
-```sql
--- Substituir pelo ID real do usuário
-UPDATE auth.users 
-SET raw_app_meta_data = raw_app_meta_data || '{"role": "admin"}'
-WHERE id = 'UUID_DO_USUARIO';
-```
 
 ### Executar
 
