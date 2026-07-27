@@ -26,7 +26,7 @@ export default async function AdminBannersPage() {
             Gestion des Banners
           </h1>
           <p className="text-muted-foreground mt-1">
-            Gérez les vidéos et images qui s'affichent dans le carrousel de la page d'accueil.
+            Gérez les vidéos et images qui s&apos;affichent dans le carrousel de la page d&apos;accueil.
           </p>
         </div>
         <div className="flex items-center gap-2">

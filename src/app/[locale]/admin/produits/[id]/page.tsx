@@ -34,7 +34,7 @@ export default async function EditProductPage(props: { params: Promise<{ id: str
           <ArrowLeft className="w-4 h-4 mr-2" /> Retour aux produits
         </Link>
         <h2 className="text-2xl font-bold tracking-tight">Modifier le produit</h2>
-        <p className="text-muted-foreground">Modifiez les informations de "{product.title}".</p>
+        <p className="text-muted-foreground">Modifiez les informations de &quot;{product.title}&quot;.</p>
       </div>
 
       <ProductForm categories={categories || []} product={product} />

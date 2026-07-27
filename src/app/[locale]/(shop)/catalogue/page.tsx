@@ -80,7 +80,7 @@ export default async function CataloguePage({
 
           {error && (
             <div className="p-4 bg-destructive/10 text-destructive rounded-md mb-8">
-              Une erreur s'est produite lors du chargement des produits.
+              Une erreur s&apos;est produite lors du chargement des produits.
             </div>
           )}
 

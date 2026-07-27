@@ -158,7 +158,7 @@ export default async function Home({
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {displayProducts.map((product) => (
-                  <ProductCard key={product.id} product={product as any} />
+                  <ProductCard key={product.id} product={product as unknown as React.ComponentProps<typeof ProductCard>['product']} />
                 ))}
               </div>
             )}
@@ -179,6 +179,7 @@ export default async function Home({
             <div className="relative rounded-3xl overflow-hidden bg-zinc-900 shadow-xl border border-zinc-800">
               {/* Placeholder image background */}
               <div className="absolute inset-0 z-0">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img 
                   src="https://images.unsplash.com/photo-1597740985671-2a8a3b80502e?q=80&w=2000&auto=format&fit=crop" 
                   alt="Réparation de téléphone" 

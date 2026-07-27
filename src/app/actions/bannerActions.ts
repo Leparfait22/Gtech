@@ -25,7 +25,7 @@ export async function createBanner(formData: FormData) {
   
   const display_order = maxOrderData && maxOrderData.length > 0 ? maxOrderData[0].display_order + 1 : 1
 
-  const { data, error } = await supabase
+  const { error } = await supabase
     .from('hero_banners')
     .insert([
       {

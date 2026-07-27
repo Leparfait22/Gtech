@@ -1,7 +1,5 @@
 import { createClient } from '@/utils/supabase/server'
 import { notFound } from 'next/navigation'
-import Image from 'next/image'
-import { Button } from '@/components/ui/button'
 import { ArrowLeft, Check, Shield, Truck, Cpu, HardDrive, Monitor, Camera, Battery, Gamepad, Settings, Smartphone, MemoryStick } from 'lucide-react'
 import { Link } from '@/i18n/routing'
 import { AddToCartButton } from './AddToCartButton'
@@ -50,7 +48,8 @@ const MOCK_PRODUCTS = [
   }
 ]
 
-const IconMap: Record<string, any> = {
+type LucideIcon = React.ComponentType<React.SVGProps<SVGSVGElement>>
+const IconMap: Record<string, LucideIcon> = {
   Cpu, HardDrive, Monitor, Camera, Battery, Gamepad, Settings, Smartphone, MemoryStick
 }
 
@@ -81,7 +80,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
     .single()
 
   if (!product) {
-    product = MOCK_PRODUCTS.find(p => p.id === id) as any
+    product = MOCK_PRODUCTS.find(p => p.id === id) as unknown as typeof product
   }
 
   if (!product) {
@@ -158,7 +157,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                     Caractéristiques techniques
                   </h3>
                   <div className="grid grid-cols-2 gap-3">
-                    {product.features.map((feature: any, index: number) => (
+                    {product.features.map((feature: { label: string; value: string; icon?: string }, index: number) => (
                       <div key={index} className="flex items-center gap-3 p-3 rounded-xl border bg-card shadow-sm hover:shadow-md transition-shadow">
                         <div className="bg-zinc-100 dark:bg-zinc-800 p-2 rounded-lg text-zinc-600 dark:text-zinc-400">
                           {getFeatureIcon(feature.label, feature.icon)}

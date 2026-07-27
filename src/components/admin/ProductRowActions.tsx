@@ -60,7 +60,7 @@ export function ProductRowActions({ productId, productTitle }: { productId: stri
           <DialogHeader>
             <DialogTitle>Supprimer le produit</DialogTitle>
             <DialogDescription>
-              Êtes-vous sûr de vouloir supprimer "{productTitle}" ? Cette action est irréversible et supprimera définitivement le produit du catalogue.
+              Êtes-vous sûr de vouloir supprimer &quot;{productTitle}&quot; ? Cette action est irréversible et supprimera définitivement le produit du catalogue.
             </DialogDescription>
           </DialogHeader>
 

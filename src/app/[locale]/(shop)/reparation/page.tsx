@@ -14,7 +14,7 @@ export default function ReparationPage() {
   const [description, setDescription] = useState('')
   const [name, setName] = useState('')
 
-  const WHATSAPP_NUMBER = '5549999802249' // Format international sans le +
+  const WHATSAPP_NUMBER = '22879542958' // Format international sans le +
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -45,7 +45,7 @@ export default function ReparationPage() {
         <CardHeader>
           <CardTitle>Demande de devis gratuit</CardTitle>
           <CardDescription>
-            Remplissez ce formulaire. Vous serez redirigé vers WhatsApp pour finaliser l'envoi de votre demande.
+            Remplissez ce formulaire. Vous serez redirigé vers WhatsApp pour finaliser l&apos;envoi de votre demande.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -61,7 +61,7 @@ export default function ReparationPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="model">Modèle de l'appareil <span className="text-red-500">*</span></Label>
+              <Label htmlFor="model">Modèle de l&apos;appareil <span className="text-red-500">*</span></Label>
               <Input
                 id="model"
                 placeholder="Ex: iPhone 13 Pro, Samsung Galaxy S22..."
@@ -86,7 +86,7 @@ export default function ReparationPage() {
             <div className="flex items-start gap-3 p-4 rounded-lg bg-blue-50 text-blue-900 border border-blue-200 dark:bg-blue-950/50 dark:text-blue-200 dark:border-blue-900">
               <AlertCircle className="h-5 w-5 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
               <div className="text-sm">
-                <strong>Astuce :</strong> Si vous avez des photos de l'appareil endommagé, vous pourrez les joindre directement dans la conversation WhatsApp qui va s'ouvrir.
+                <strong>Astuce :</strong> Si vous avez des photos de l&apos;appareil endommagé, vous pourrez les joindre directement dans la conversation WhatsApp qui va s&apos;ouvrir.
               </div>
             </div>
 

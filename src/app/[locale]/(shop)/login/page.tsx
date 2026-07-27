@@ -31,7 +31,7 @@ export default function LoginPage() {
     <div className="flex items-center justify-center min-h-screen bg-muted/40">
       <Card className="w-full max-w-sm">
         <CardHeader>
-          <CardTitle className="text-2xl font-bold">Panneau d'administration</CardTitle>
+          <CardTitle className="text-2xl font-bold">Panneau d&apos;administration</CardTitle>
           <CardDescription>
             Entrez vos identifiants pour accéder au système.
           </CardDescription>

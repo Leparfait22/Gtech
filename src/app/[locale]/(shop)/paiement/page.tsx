@@ -1,6 +1,5 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import { useCart } from '@/store/cart'
 import { Button } from '@/components/ui/button'
@@ -12,7 +11,6 @@ import Image from 'next/image'
 import { formatPrice } from '@/utils/formatPrice'
 
 export default function CheckoutPage() {
-  const t = useTranslations('Checkout')
   const cart = useCart()
   const router = useRouter()
 
@@ -87,7 +85,7 @@ export default function CheckoutPage() {
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="expiry">Date d'expiration</Label>
+                    <Label htmlFor="expiry">Date d&apos;expiration</Label>
                     <Input id="expiry" placeholder="MM/AA" required />
                   </div>
                   <div className="space-y-2">

@@ -19,7 +19,7 @@ export default function NotFound() {
 
       <Link href="/">
         <Button size="lg" className="rounded-full px-8 h-12">
-          <Home className="w-4 h-4 mr-2" /> Retour à l'accueil
+          <Home className="w-4 h-4 mr-2" /> Retour à l&apos;accueil
         </Button>
       </Link>
     </main>

@@ -24,9 +24,9 @@ export async function login(formData: FormData) {
       await supabase.auth.signOut()
       errorResponse = "Accès refusé. Vous n'avez pas les droits d'administrateur."
     }
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error('Unexpected login error:', err)
-    errorResponse = err.message || 'Une erreur de réseau ou de communication avec le serveur est survenue. Veuillez réessayer.'
+    errorResponse = err instanceof Error ? err.message : 'Une erreur de réseau ou de communication avec le serveur est survenue. Veuillez réessayer.'
   }
 
   if (errorResponse) {
@@ -45,6 +45,6 @@ export async function logout() {
   }
 
   revalidatePath('/', 'layout')
-  redirect('/login')
+  redirect('/fr/login')
 }
 

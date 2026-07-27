@@ -18,6 +18,28 @@ interface HeroCarouselProps {
 export function HeroCarousel({ banners, children }: HeroCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
 
+  // Auto-advance for images (hook must be called before any conditional return)
+  useEffect(() => {
+    if (!banners || banners.length <= 1) return;
+
+    let timer: NodeJS.Timeout;
+
+    if (banners[currentIndex]?.media_type === 'image') {
+      timer = setTimeout(() => {
+        setCurrentIndex((prev) => (prev + 1) % banners.length)
+      }, 5000)
+    }
+
+    return () => {
+      if (timer) clearTimeout(timer)
+    }
+  }, [currentIndex, banners])
+
+  // Handle video end to switch to next banner
+  const handleVideoEnded = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % banners.length)
+  }
+
   // Fallback to static black background if no banners
   if (!banners || banners.length === 0) {
     return (
@@ -29,29 +51,6 @@ export function HeroCarousel({ banners, children }: HeroCarouselProps) {
       </section>
     )
   }
-
-  // Handle video end to switch to next banner
-  const handleVideoEnded = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % banners.length)
-  }
-
-  // Auto-advance for images or as fallback
-  useEffect(() => {
-    if (!banners || banners.length <= 1) return;
-
-    let timer: NodeJS.Timeout;
-
-    // If it's an image, we must manually advance it after a delay (e.g., 5s)
-    if (banners[currentIndex]?.media_type === 'image') {
-      timer = setTimeout(() => {
-        setCurrentIndex((prev) => (prev + 1) % banners.length)
-      }, 5000)
-    }
-
-    return () => {
-      if (timer) clearTimeout(timer)
-    }
-  }, [currentIndex, banners])
 
   return (
     <section className="relative h-[80vh] min-h-[600px] text-white overflow-hidden bg-zinc-950">
@@ -79,7 +78,8 @@ export function HeroCarousel({ banners, children }: HeroCarouselProps) {
               onError={handleVideoEnded} 
             />
           ) : (
-            <img 
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
               src={banners[currentIndex].media_url}
               alt={banners[currentIndex].title || 'Banner'}
               className="w-full h-full object-cover"

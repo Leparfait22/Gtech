@@ -25,7 +25,7 @@ export default async function AdminCommandesPage() {
         </h2>
         
         <p className="text-muted-foreground max-w-sm mx-auto">
-          Lorsqu'un client passera une commande sur votre boutique, elle apparaîtra ici.
+          Lorsqu&apos;un client passera une commande sur votre boutique, elle appara&#238;tra ici.
         </p>
       </div>
     </div>

@@ -80,8 +80,8 @@ export function BannerModal() {
       } else {
         setError(result.error || 'Erreur lors de la création du banner.')
       }
-    } catch (err: any) {
-      setError(err.message || 'Une erreur est survenue.')
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Une erreur est survenue.')
     } finally {
       setLoading(false)
     }
@@ -97,7 +97,7 @@ export function BannerModal() {
         <DialogHeader>
           <DialogTitle>Ajouter un banner</DialogTitle>
           <DialogDescription>
-            Ajoutez un nouveau banner vidéo ou image pour la page d'accueil.
+            Ajoutez un nouveau banner vidéo ou image pour la page d&apos;accueil.
           </DialogDescription>
         </DialogHeader>
 
@@ -137,7 +137,7 @@ export function BannerModal() {
                 onClick={() => setUploadMode('url')}
                 className={`flex-1 flex items-center justify-center gap-2 py-1.5 text-sm font-medium rounded-sm transition-all ${uploadMode === 'url' ? 'bg-background shadow-sm' : 'text-muted-foreground hover:text-foreground'}`}
               >
-                <LinkIcon className="w-4 h-4" /> Coller l'URL
+                <LinkIcon className="w-4 h-4" /> Coller l&apos;URL
               </button>
               <button 
                 type="button"

@@ -14,7 +14,7 @@ export default function AdminNotFound() {
       </h2>
       
       <p className="text-muted-foreground max-w-md mx-auto mb-8">
-        La section d'administration que vous essayez d'atteindre n'existe pas ou n'est pas encore implémentée.
+        La section d&apos;administration que vous essayez d&apos;atteindre n&apos;existe pas ou n&apos;est pas encore implémentée.
       </p>
 
       <Link href="/admin">

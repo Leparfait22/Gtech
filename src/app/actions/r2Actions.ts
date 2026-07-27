@@ -14,7 +14,11 @@ const r2 = new S3Client({
   },
 })
 
-export async function getPresignedUrl(fileName: string, contentType: string) {
+export async function getPresignedUrl(
+  fileName: string,
+  contentType: string,
+  folder: 'banners' | 'produits' = 'banners'
+) {
   // Check auth
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
@@ -30,7 +34,7 @@ export async function getPresignedUrl(fileName: string, contentType: string) {
     // Clean up filename and add random string to prevent overwrites
     const ext = fileName.split('.').pop()
     const safeName = fileName.replace(/[^a-zA-Z0-9]/g, '-').replace(/-+/g, '-').substring(0, 20)
-    const objectKey = `banners/${Date.now()}-${safeName}.${ext}`
+    const objectKey = `${folder}/${Date.now()}-${safeName}.${ext}`
 
     const command = new PutObjectCommand({
       Bucket: bucketName,
@@ -49,8 +53,9 @@ export async function getPresignedUrl(fileName: string, contentType: string) {
       uploadUrl: signedUrl,
       publicUrl: publicUrl
     }
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : 'Erreur inconnue'
     console.error('Error generating presigned URL:', error)
-    return { success: false, error: error.message }
+    return { success: false, error: message }
   }
 }

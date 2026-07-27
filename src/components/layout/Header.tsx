@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/routing'
-import { ShoppingCart, Search, Menu } from 'lucide-react'
+import { Search, Menu } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { CartSheet } from './CartSheet'
 import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetClose } from '@/components/ui/sheet'

@@ -32,7 +32,7 @@ export async function createProduct(formData: FormData) {
   // Simple slug generation
   const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')
 
-  const { data, error } = await supabase
+  const { error } = await supabase
     .from('products')
     .insert([
       {

@@ -14,6 +14,7 @@ export default function NotreBoutiquePage() {
       {/* Hero Section */}
       <section className="relative h-[40vh] min-h-[400px] flex items-center justify-center overflow-hidden bg-zinc-900">
         <div className="absolute inset-0 z-0">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img 
             src="https://images.unsplash.com/photo-1555529733-0e670560f4e1?q=80&w=2000&auto=format&fit=crop" 
             alt="Intérieur de la boutique G-Tech" 
@@ -30,7 +31,7 @@ export default function NotreBoutiquePage() {
             Notre Boutique
           </h1>
           <p className="text-lg md:text-xl text-zinc-300 max-w-2xl mx-auto drop-shadow-md">
-            G-Tech Store : Votre référence de confiance à Lomé pour l'électronique premium, le reconditionné certifié et la réparation d'expertise.
+            G-Tech Store : Votre référence de confiance à Lomé pour l&apos;électronique premium, le reconditionné certifié et la réparation d&apos;expertise.
           </p>
         </div>
       </section>
@@ -52,7 +53,7 @@ export default function NotreBoutiquePage() {
               </div>
               <h3 className="text-xl font-semibold mb-3">Qualité Garantie</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Tous nos produits, qu'ils soient neufs ou reconditionnés, passent par des tests rigoureux pour garantir une performance optimale.
+                Tous nos produits, qu&apos;ils soient neufs ou reconditionnés, passent par des tests rigoureux pour garantir une performance optimale.
               </p>
             </div>
             
@@ -62,7 +63,7 @@ export default function NotreBoutiquePage() {
               </div>
               <h3 className="text-xl font-semibold mb-3">Livraison Rapide</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Profitez d'un service de livraison express directement à votre porte, ou récupérez vos achats en magasin selon vos préférences.
+                Profitez d&apos;un service de livraison express directement à votre porte, ou récupérez vos achats en magasin selon vos préférences.
               </p>
             </div>
 
@@ -72,7 +73,7 @@ export default function NotreBoutiquePage() {
               </div>
               <h3 className="text-xl font-semibold mb-3">Support Technique</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Notre équipe de techniciens spécialisés est à votre disposition pour le SAV, les réparations complexes et les conseils d'utilisation.
+                Notre équipe de techniciens spécialisés est à votre disposition pour le SAV, les réparations complexes et les conseils d&apos;utilisation.
               </p>
             </div>
           </div>
@@ -91,15 +92,19 @@ export default function NotreBoutiquePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <div className="rounded-2xl overflow-hidden h-64 shadow-sm">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?q=80&w=800&auto=format&fit=crop" alt="Smartphones en rayon" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
             </div>
             <div className="rounded-2xl overflow-hidden h-64 shadow-sm lg:col-span-2">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="https://images.unsplash.com/photo-1601524909162-ae8725290836?q=80&w=1200&auto=format&fit=crop" alt="Espace de réparation tech" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
             </div>
             <div className="rounded-2xl overflow-hidden h-64 shadow-sm lg:col-span-2">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="https://images.unsplash.com/photo-1491933382434-500287f9b54b?q=80&w=1200&auto=format&fit=crop" alt="Accessoires premium" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
             </div>
             <div className="rounded-2xl overflow-hidden h-64 shadow-sm">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?q=80&w=800&auto=format&fit=crop" alt="Laptops et ordinateurs" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
             </div>
           </div>
@@ -115,7 +120,7 @@ export default function NotreBoutiquePage() {
             <div>
               <h2 className="text-3xl font-bold tracking-tight mb-6">Contactez-nous</h2>
               <p className="text-zinc-400 mb-8">
-                Une question sur un produit ? Besoin d'un devis pour une réparation ? Remplissez ce formulaire et nous vous répondrons dans les plus brefs délais.
+                Une question sur un produit ? Besoin d&apos;un devis pour une réparation ? Remplissez ce formulaire et nous vous répondrons dans les plus brefs délais.
               </p>
 
               <form action="mailto:remamoussougan@gmail.com" method="GET" encType="text/plain" className="space-y-6">

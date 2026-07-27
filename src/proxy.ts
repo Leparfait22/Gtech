@@ -22,7 +22,7 @@ export const config = {
     '/',
     
     // Set a cookie to remember the previous locale for all requests that have a locale prefix
-    '/(fr|en)/:path*',
+    '/fr/:path*',
 
     // Match all pathnames except for
     // - … if they start with `/api`, `/_next` or `/_vercel`

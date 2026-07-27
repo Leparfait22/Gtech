@@ -90,6 +90,7 @@ export function BannerList({ initialBanners }: BannerListProps) {
                     {banner.media_type === 'video' ? (
                       <video src={banner.media_url} className="w-full h-full object-cover" muted />
                     ) : (
+                      /* eslint-disable-next-line @next/next/no-img-element */
                       <img src={banner.media_url} alt={banner.title} className="w-full h-full object-cover" />
                     )}
                   </div>
